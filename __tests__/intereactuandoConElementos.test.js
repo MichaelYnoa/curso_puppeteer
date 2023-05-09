@@ -2,10 +2,10 @@ const puppeteer = require('puppeteer')
 
 describe(' Interactuando con elementos', () =>{
 
-    it('debe de abrir y cerrar el navergador',async() => {
+    it('debe de abrir y llenar un formulario',async() => {
 
         const browser = await puppeteer.launch({
-            headless: false,
+            headless: true,
             slowMo: 0,
             defaultViewport: null
 
@@ -25,10 +25,16 @@ describe(' Interactuando con elementos', () =>{
 
         //doble click
         await page.click('#authentication > button', {clickCount: 2 ,delay: 500})
-        await page.waitForTimeout(3000)
+        //await page.waitForTimeout(3000)
         
-        
-
+        await page.goto('https://devexpress.github.io/testcafe/example/')
+        //await page.waitForTimeout(3000)
+        await page.type('#developer-name', 'Michael')
+        await page.click('#remote-testing')
+        await page.click('#tried-test-cafe')
+        await page.type('#comments', 'Esto es un comentario con tiempo de escritura', {delay: 100})
+        await page.click('#submit-button')
+        //await page.waitForTimeout(3000)
 
 
 
