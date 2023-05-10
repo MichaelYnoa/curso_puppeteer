@@ -5,7 +5,7 @@ describe('Extrayendo informacion', () =>{
     let browser
     let page
     
-    beforeEach( async() => {
+    beforeAll( async() => {
         browser = await puppeteer.launch({
             headless: false,
             slowMo: 0,
@@ -14,11 +14,11 @@ describe('Extrayendo informacion', () =>{
         })
         page = await browser.newPage()
 
-    })
+    }, 100000)
 
-    afterEach( async() => {
+    afterAll( async() => {
         await browser.close()
-    })
+    }, 100000)
 
 
     it('Extraer el titulo del elemento', async() => {
