@@ -1,5 +1,7 @@
 const puppeteer = require('puppeteer')
 
+const {getText, ge} = require('../lib/helpers')
+
 describe('Extrayendo informacion', () =>{
 
     let browser
@@ -48,6 +50,18 @@ describe('Extrayendo informacion', () =>{
         const texto = await propiedad.jsonValue()
 
         console.log('texto: ', texto)
+
+    }, 500000 )
+
+    it('Extraer la informacion de un elemento usando funciones',async() => {
+
+       
+        await page.goto('https://platzi.com', {waitUntil: 'networkidle0' })
+        await page.waitForSelector('#Header-v2 > nav.Nav-header.Nav-header-desktopCtas > div.Menu > div > div > ul > li:nth-child(7) > a')
+        
+        nombreBoton = await getText(page, '#Header-v2 > nav.Nav-header.Nav-header-desktopCtas > div.Menu > div > div > ul > li:nth-child(7) > a', (button) => button.textContent )
+        
+        console.log('Nombre del boton: ', nombreBoton)
 
     }, 500000 )
 
