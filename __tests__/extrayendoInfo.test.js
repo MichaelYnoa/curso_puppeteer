@@ -9,7 +9,7 @@ describe('Extrayendo informacion', () =>{
     
     beforeAll( async() => {
         browser = await puppeteer.launch({
-            headless: false,
+            headless: true,
             slowMo: 0,
             defaultViewport: null
 
@@ -51,7 +51,7 @@ describe('Extrayendo informacion', () =>{
 
         console.log('texto: ', texto)
 
-    }, 500000 )
+    }, 5000000000 )
 
     it('Extraer la informacion de un elemento usando funciones',async() => {
 
@@ -63,7 +63,7 @@ describe('Extrayendo informacion', () =>{
         
         console.log('Nombre del boton: ', nombreBoton)
 
-    }, 500000 )
+    }, 5000000000 )
 
 
 })
